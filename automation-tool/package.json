@@ -1,0 +1,16 @@
+{
+  "name": "automation-tool",
+  "version": "1.0.0",
+  "description": "An automation tool that sends requests to two endpoints and compares the responses using AI.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "openai": "^3.0.0",
+    "dotenv": "^10.0.0"
+  },
+  "author": "Jim O'Brien",
+  "license": "MIT"
+}
