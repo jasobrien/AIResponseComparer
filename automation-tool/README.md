@@ -65,7 +65,7 @@ async function main() {
   };
 
   const comparisonResult = await compareResponses(response1, response2);
-  console.log("Comparison Result:", comparisonResult);
+  // console.log("Comparison Result:", comparisonResult);
 }
 
 main();

@@ -1,0 +1,62 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:tns="http://tempuri.org/" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+             name="MultiplyService" 
+             targetNamespace="http://tempuri.org/">
+
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tempuri.org/">
+            <element name="Multiply">
+                <complexType>
+                    <sequence>
+                        <element name="a" type="xsd:int"/>
+                        <element name="b" type="xsd:int"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="MultiplyResponse">
+                <complexType>
+                    <sequence>
+                        <element name="MultiplyResult" type="xsd:int"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+
+    <message name="MultiplyRequest">
+        <part name="parameters" element="tns:Multiply"/>
+    </message>
+    <message name="MultiplyResponse">
+        <part name="parameters" element="tns:MultiplyResponse"/>
+    </message>
+
+    <portType name="MultiplyPortType">
+        <operation name="Multiply">
+            <input message="tns:MultiplyRequest"/>
+            <output message="tns:MultiplyResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="MultiplyBinding" type="tns:MultiplyPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Multiply">
+            <soap:operation soapAction="http://tempuri.org/Multiply"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="MultiplyService">
+        <port name="MultiplyPort" binding="tns:MultiplyBinding">
+            <soap:address location="http://example.com/multiply"/>
+        </port>
+    </service>
+
+</definitions>

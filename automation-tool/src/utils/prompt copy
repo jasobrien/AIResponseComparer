@@ -1,0 +1,95 @@
+You are an expert in SOAP and WSDL validation. Compare the following two SOAP responses against each other and validate them against the provided WSDL schema.
+
+### **Validation Criteria:**
+
+1. The XML hierarchy, elements, and attributes must match the structure defined in the WSDL.
+2. Data types must match the expected types from the WSDL (e.g., strings remain strings, numbers remain numbers).
+3. The order of elements must be preserved as defined in the WSDL.
+4. Namespace consistency must be maintained according to the WSDL.
+5. Return a **Pass** if both responses conform to the WSDL and have the same structure.
+6. If they do not match, return **Fail** and provide a brief explanation of the differences.
+
+### **WSDL Definition:**
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://tempuri.org/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             name="MultiplyService"
+             targetNamespace="http://tempuri.org/">
+
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tempuri.org/">
+            <element name="Multiply">
+                <complexType>
+                    <sequence>
+                        <element name="a" type="xsd:int"/>
+                        <element name="b" type="xsd:int"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="MultiplyResponse">
+                <complexType>
+                    <sequence>
+                        <element name="MultiplyResult" type="xsd:int"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+
+    <message name="MultiplyRequest">
+        <part name="parameters" element="tns:Multiply"/>
+    </message>
+    <message name="MultiplyResponse">
+        <part name="parameters" element="tns:MultiplyResponse"/>
+    </message>
+
+    <portType name="MultiplyPortType">
+        <operation name="Multiply">
+            <input message="tns:MultiplyRequest"/>
+            <output message="tns:MultiplyResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="MultiplyBinding" type="tns:MultiplyPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Multiply">
+            <soap:operation soapAction="http://tempuri.org/Multiply"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="MultiplyService">
+        <port name="MultiplyPort" binding="tns:MultiplyBinding">
+            <soap:address location="http://example.com/multiply"/>
+        </port>
+    </service>
+
+</definitions>
+```
+
+### **SOAP Response 1:**
+
+```xml
+<!-- Insert SOAP Response 1 here -->
+```
+
+### **SOAP Response 2:**
+
+```xml
+<!-- Insert SOAP Response 2 here -->
+```
+
+### **Result:**
+
+Please provide a summary result at the end of the validation process, indicating whether the responses **Pass** or **Fail** the validation. The summary should be concise and clearly state "Result: Pass" or "Result: Fail" at the end.

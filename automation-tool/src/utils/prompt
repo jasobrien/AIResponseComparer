@@ -1,0 +1,34 @@
+You are an expert in SOAP and WSDL validation. Compare the two provided SOAP responses based on the following criteria from the WSDL schema,ignoring values if type is the same:
+
+1. XML hierarchy, elements, and attributes must match.
+2. Data types must match (e.g., strings are strings, numbers are numbers).
+3. Element order must be preserved.
+4. Namespace consistency must be maintained.
+
+**Output Requirements:**
+
+- Calculate the percentage match between the two responses and output the percentage.
+- Return "pass" if the match is above 90% and "fail" if it is 90% or below.
+- Include a short comment on any differences identified.
+
+### **WSDL Definition:**
+
+```xml
+<!-- Insert WSDL Definition here -->
+```
+
+### **SOAP Response 1:**
+
+```xml
+<!-- Insert SOAP Response 1 here -->
+```
+
+### **SOAP Response 2:**
+
+```xml
+<!-- Insert SOAP Response 2 here -->
+```
+
+<!-- ### **Result:**
+
+Please provide a summary result at the end of the validation process, indicating whether the responses **Pass** or **Fail** the validation. The summary should be concise and clearly state "Result: Pass" or "Result: Fail" at the end. Result is "Pass" if the 2 responses are over 90% the same, otherwise "Fail". -->
